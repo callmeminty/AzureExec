@@ -46,9 +46,16 @@ body {
     position: absolute;
     height: 3em;
     width: 2px;
-    background-color: #d4d4d4;
+    border: 1px solid #d4d4d4;
     animation: blink 1s infinite;
     margin-left: -1px;
+    top: -0.2em;
+    background: transparent;
+}
+
+.current-line {
+    color: #ffffff;
+    font-weight: bold;
 }
 
 @keyframes blink {
