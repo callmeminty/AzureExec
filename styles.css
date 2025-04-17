@@ -1,7 +1,7 @@
 body {
     background-color: #1e1e1e;
     color: #d4d4d4;
-    font-family: 'Courier New', monospace;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 20px;
 }
@@ -29,9 +29,28 @@ body {
     resize: none;
     line-height: 1.5;
     font-size: 16px;
-    font-family: 'Courier New', monospace;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+    position: relative;
 }
 
 .editor::placeholder {
     color: #6e7681;
+}
+
+.editor {
+    caret-color: transparent;
+}
+
+.editor.typing::before {
+    content: '';
+    position: absolute;
+    height: 3em;
+    width: 2px;
+    background-color: #d4d4d4;
+    animation: blink 1s infinite;
+    margin-left: -1px;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
 }
