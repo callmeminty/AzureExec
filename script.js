@@ -3,12 +3,15 @@ const lineNumbers = document.querySelector('.line-numbers');
 
 function updateLineNumbers() {
     const lines = editor.value.split('\n');
-    lineNumbers.innerHTML = lines.map((_, i) => `<div>${i + 1}</div>`).join('');
+    const currentPosition = editor.selectionStart;
+    const currentLine = editor.value.substr(0, currentPosition).split('\n').length;
+    lineNumbers.innerHTML = lines.map((_, i) => `<div class="${i + 1 === currentLine ? 'current-line' : ''}">${i + 1}</div>`).join('');
 }
 
-editor.addEventListener('input', () => {
-    updateLineNumbers();
-});
+editor.addEventListener('input', updateLineNumbers);
+editor.addEventListener('click', updateLineNumbers);
+editor.addEventListener('keyup', updateLineNumbers);
+editor.addEventListener('select', updateLineNumbers);
 
 // Typing effect
 let typingTimeout;
